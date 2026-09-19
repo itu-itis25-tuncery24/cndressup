@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Canan'ı Giydir 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#e879a8">
+    <link rel="icon" type="image/png" href="icon.png">
+</head>
+<body>
+
+    <!-- ============ INTRO SCREEN ============ -->
+    <div id="intro-screen" class="screen active">
+        <div class="intro-content">
+            <div class="intro-sparkles">✨</div>
+            <h1 class="intro-title">Bugün özel bir yere gidiyoruz...</h1>
+            <p class="intro-subtitle">Ama önce hazırlanmalıyız, değil mi?</p>
+            <button id="btn-start" class="btn-magic">
+                Hadi Başlayalım
+                <span class="btn-sparkle">💫</span>
+            </button>
+        </div>
+        <div class="floating-hearts">
+            <span>💕</span><span>🤍</span><span>💖</span><span>✨</span><span>💗</span>
+            <span>🌸</span><span>💜</span><span>🦋</span><span>💕</span><span>🤍</span>
+        </div>
+    </div>
+
+    <!-- ============ GAME SCREEN ============ -->
+    <div id="game-screen" class="screen">
+        <header class="game-header">
+            <h1 class="game-title">Canan'ı Giydir</h1>
+            <button id="btn-reset" class="btn-icon" title="Sıfırla">🔄</button>
+        </header>
+
+        <main class="game-main split-layout">
+            <!-- Left Column: Character Stage -->
+            <section class="stage-section">
+                <div class="character-stage">
+                    <div class="stage-bg"></div>
+                    <div id="character-container" class="character-container">
+                        <img id="layer-bg" class="char-layer" src="" alt="" style="display:none;">
+                        <img id="layer-body" class="char-layer" src="" alt="Karakter">
+                        <img id="layer-shoes" class="char-layer" src="" alt="" style="display:none;">
+                        <img id="layer-top" class="char-layer" src="" alt="" style="display:none;">
+                        <img id="layer-bottom" class="char-layer" src="" alt="" style="display:none;">
+                        <img id="layer-belt" class="char-layer" src="" alt="" style="display:none;">
+                        <img id="layer-necklace" class="char-layer" src="" alt="" style="display:none;">
+                        <img id="layer-bracelet-left" class="char-layer" src="" alt="" style="display:none;">
+                        <img id="layer-bracelet-right" class="char-layer" src="" alt="" style="display:none;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Options & Wardrobe Area -->
+            <section class="options-section">
+                <div class="wardrobe-card">
+                    <!-- Category Tabs -->
+                    <div class="category-tabs">
+                        <button class="cat-tab active" data-category="top">
+                            <span class="cat-icon">👚</span>
+                            <span class="cat-label">Üst</span>
+                        </button>
+                        <button class="cat-tab" data-category="bottom">
+                            <span class="cat-icon">👖</span>
+                            <span class="cat-label">Alt</span>
+                        </button>
+                        <button class="cat-tab" data-category="belt">
+                            <span class="cat-icon">🎗️</span>
+                            <span class="cat-label">Kemer</span>
+                        </button>
+                        <button class="cat-tab" data-category="shoes">
+                            <span class="cat-icon">👟</span>
+                            <span class="cat-label">Ayakkabı</span>
+                        </button>
+                        <button class="cat-tab" data-category="necklace">
+                            <span class="cat-icon">📿</span>
+                            <span class="cat-label">Kolye</span>
+                        </button>
+                        <button class="cat-tab" data-category="bracelet">
+                            <span class="cat-icon">💫</span>
+                            <span class="cat-label">Bileklik</span>
+                        </button>
+                    </div>
+
+                    <!-- Wrist Sub-selector (shown when category is 'bracelet') -->
+                    <div id="wrist-subselector" class="wrist-subselector" style="display: none;">
+                        <button class="wrist-btn active" data-wrist="left">✨ Sol Bilek</button>
+                        <button class="wrist-btn" data-wrist="right">✨ Sağ Bilek</button>
+                        <button class="wrist-btn" data-wrist="both">💫 İkisi Birden</button>
+                    </div>
+
+                    <!-- Item Selector -->
+                    <div class="item-selector">
+                        <button id="btn-prev" class="btn-nav">◀</button>
+                        <div id="item-carousel" class="item-carousel">
+                            <!-- Items will be generated by JS -->
+                        </div>
+                        <button id="btn-next" class="btn-nav">▶</button>
+                    </div>
+
+                    <!-- Item Dots / Quick Select -->
+                    <div id="item-dots" class="item-dots">
+                        <!-- Dots generated by JS -->
+                    </div>
+
+                    <!-- Actions: Remove & Finish -->
+                    <div class="options-actions">
+                        <button id="btn-remove" class="btn-remove">
+                            ✕ Bu Parçayı Çıkar
+                        </button>
+                        <button id="btn-finish" class="btn-finish">
+                            Hazırım 🤍
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ============ FINAL SCREEN ============ -->
+    <div id="final-screen" class="screen">
+        <div class="final-content">
+            <p id="final-msg-1" class="final-msg msg-hidden">Bence ne giydiğinin hiçbir önemi yok.</p>
+            <p id="final-msg-2" class="final-msg msg-hidden">Çünkü sen zaten her halinle güzelsin. 🤍</p>
+            <p id="final-msg-3" class="final-msg msg-hidden final-love">Seni çok seviyorum Cananımmm 💖</p>
+            <button id="btn-replay" class="btn-magic msg-hidden">Tekrar Oyna 🔄</button>
+        </div>
+        <div class="floating-hearts final-hearts">
+            <span>💕</span><span>🤍</span><span>💖</span><span>✨</span><span>💗</span>
+            <span>🌸</span><span>💜</span><span>🦋</span><span>💕</span><span>🤍</span>
+            <span>💖</span><span>✨</span><span>💗</span><span>🤍</span><span>💕</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
+</body>
+</html>
